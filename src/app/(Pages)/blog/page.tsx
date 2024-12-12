@@ -4,7 +4,7 @@ import { Banner } from '../../components/Banner'
 import {  useGlobalContext } from '@/app/GlobalContext'
 import { blogType } from '@/app/data'
 import BlogBG from '@/app/components/Blog'
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { SearchIcon } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -17,22 +17,25 @@ export default function Blog() {
   const [searchResults, setSearchResults] = useState<blogType[]>([])
   const [pageIndex, setPageIndex] = useState(0)
   const [keyword, setKeyword] = useState('')
-  function search() {
-    setLoading(true)
-    const searchArray = blogs.filter((product) => {
-      const titleSet = new Set(product.title.toLowerCase()) // Create a Set for the title
-      return keyword
-        .toLowerCase()
-        .split('')
-        .every((letter) => titleSet.has(letter)) // Check using the Set
-    })
-
-    setSearchResults(searchArray)
-    setLoading(false)
-  }
-  useEffect(() => {
-    search()
-  }, [keyword,search])
+  const [debouncedKeyword, setDebouncedKeyword] = useState(keyword)
+    const search = useCallback(() => {
+        setLoading(true)
+    
+        const keywordLower = debouncedKeyword.toLowerCase()
+        const searchArray = blogs.filter((blog) =>
+          blog.title.toLowerCase().includes(keywordLower)
+        )
+    
+        setSearchResults(searchArray)
+        setLoading(false)
+      }, [blogs, debouncedKeyword, setSearchResults])
+      useEffect(() => {
+        search()
+      }, [search])
+      useEffect(() => {
+        const handler = setTimeout(() => setDebouncedKeyword(keyword), 300) // Debounce for 300ms
+        return () => clearTimeout(handler) // Clear timeout on keyword change
+      }, [keyword])
   // Generate button array for pagination
   const btnArr = Array.from({ length: noOfPages }, (_, i) => i + 1)
   const showNumber = 3
