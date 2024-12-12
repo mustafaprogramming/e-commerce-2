@@ -2,20 +2,55 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+.poppins{
+ font-family: var(--font-poppins);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components{
+ .btn{
+  @apply px-6 py-0.5 border border-black transition-all duration-500 hover:bg-black hover:text-white capitalize
+ }
+ .input{
+  @apply border rounded-lg border-black/50 px-2 py-4 outline-none
+ }
+ .label{
+  @apply text-sm font-[500] text-black/80 capitalize
+ }
+ .input-field{
+  @apply flex flex-col gap-3
+ }
+ .show-on-scroll{
+  @apply transition-all duration-[1000ms] ease-in 
+ }
+ .hide{
+  @apply opacity-0 translate-y-16
+ }
+}
+::-webkit-scrollbar{
+ width: 10px;
+}
+::-webkit-scrollbar:hover{
+ width: 15px;
+}
+::-webkit-scrollbar-thumb{
+ background: #B88E2F;
+ border: 2px solid white;
+}
+::-webkit-scrollbar-track{
+ background-color: transparent;
+}
+@layer utilities {
+ .word-spacing-normal {
+   word-spacing: normal;
+ }
+ .word-spacing-wide {
+   word-spacing: 0.25rem;
+ }
+ .word-spacing-wider {
+   word-spacing: 0.5rem;
+ }
+ .word-spacing-widest {
+   word-spacing: 1rem;
+ }
 }
