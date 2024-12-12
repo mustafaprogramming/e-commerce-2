@@ -31,7 +31,7 @@ export function SideCart({closeSideCart,sideCartOpen}:{closeSideCart:cartOpenClo
  const {cartProducts,totalItems,cartTotal,}=useGlobalContext() as {cartProducts:ProductType[],totalItems:number,cartTotal:number,};
  
   return (
-   <aside className={`${sideCartOpen?'scale-100 ':'scale-0 '} sm:origin-top-right origin-bottom-right transition-all duration-500 fixed flex flex-col sm:top-0 bottom-0 right-0 sm:w-[350px] w-full sm:h-[80vh] z-50 h-screen bg-white`}>
+   <aside className={`${sideCartOpen?'scale-100  ':'scale-0 '} sm:origin-top origin-bottom-right transition-all duration-500 fixed flex flex-col sm:top-0 right-0 bottom-0  sm:w-[350px] w-full sm:h-[80vh] z-50 h-[90vh] bg-white`}>
     <div className="flex items-center">
      <h2 className="text-xl flex-1 font-bold m-5">Shopping Cart</h2>
      <button onClick={()=>closeSideCart()}>

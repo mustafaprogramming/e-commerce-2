@@ -44,16 +44,19 @@ export default function Home() {
         />
       </section>
       <section
-        className={`show-on-scroll hide lg:h-[60vh] md:h-[50vh] sm:h-[40vh] h-[80vh] grid grid-cols-1 sm:grid-cols-2 relative py-5 sm:px-20 px-12 sm:gap-10 gap-5 bg-[#FAF4F4]`}
+        className={`show-on-scroll hide lg:h-[60vh] md:h-[50vh] sm:h-[40vh] h-[80vh] grid grid-cols-1 sm:grid-cols-2 relative py-5  sm:gap-10 gap-5 `}
       >
-        <Hero
-          src={products[17].image[0]}
-          link='/shop'
-          btnText='view more'
-          title={products[17].title}
-          height={300}
-          width={300}
-        />
+        <div className="bg-[#FAF4F4] show-on-scroll hide">
+          <Hero
+            src={products[17].image[0]}
+            link='/shop'
+            btnText='view more'
+            title={products[17].title}
+            height={300}
+            width={300}
+          />
+        </div>
+        <div className="bg-[#FAF4F4] show-on-scroll hide">
         <Hero
           src={products[18].image[0]}
           link='/shop'
@@ -62,11 +65,14 @@ export default function Home() {
           height={300}
           width={300}
         />
+        </div>
       </section>
-      <Recommended
-        text='Find a bright ideal to suit your taste with our great selection of suspension, floor and table lights.'
-        title='top picks for you'
-      />
+      <div className='show-on-scroll hide'>
+        <Recommended
+          text='Find a bright ideal to suit your taste with our great selection of suspension, floor and table lights.'
+          title='top picks for you'
+        />
+      </div>
       <section className='show-on-scroll hide w-full bg-[#FFF9E5] grid sm:grid-cols-[60%_40%] grid-cols-1 overflow-hidden pb-5'>
         <div className='max-w-[700px] h-full'>
           <Image
@@ -101,7 +107,7 @@ export default function Home() {
         </p>
         <aside className='place-items-center grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mt-16 mb-8'>
           {blogsArray.map((product) => {
-            return <BlogSM key={product.id} {...product} />
+            return <div className='show-on-scroll hide' key={product.id}><BlogSM  {...product} /></div>
           })}
         </aside>
         <Link href={'/blog'} className='w-full '>

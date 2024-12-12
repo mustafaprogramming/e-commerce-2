@@ -51,7 +51,7 @@ export default function Shop() {
       setNoOfPages(pages)
       setPageIndex(0)
     }
-  }, [products, showNumber])
+  }, [ showNumber])
 
   return (
     <main className={` flex flex-1 flex-col `}>

@@ -83,12 +83,12 @@ export default function User() {
             <Image src={image[imgIdx]} alt={title} width={500} height={500} className={`w-full h-full bg-center bg-no-repeat bg-cover`} />
           </div>
         </div>
-        <aside className='flex flex-col gap-3 lg:mt-0 md:mt-28'>
+        <aside className='flex flex-col sm:gap-3 lg:mt-0 md:mt-28'>
           <h1 className='lg:text-4xl sm:text-3xl text-xl'>
             {title}
           </h1>
           <h2 className='lg:text-2xl sm:text-xl text-lg opacity-50'>$ {price}</h2>
-          <div className='flex items-center'>
+          <div className='flex sm:flex-row flex-col sm:items-center'>
             <div className='flex gap-1 items-center'>
               {starArr.map((el,index)=>{
                 return <Star key={index} color='#FFDA5B' size={16} fill='#FFDA5B' />
@@ -96,7 +96,7 @@ export default function User() {
               {point?<StarHalf color='#FFDA5B' size={16} fill='#FFDA5B' />:''}
               ({rating})
             </div>
-            <span className='border-l border-black w-1 h-8 border-opacity-40 mx-4'></span>
+            <span className='border-l border-black w-1 sm:h-8 border-opacity-40 mx-4'></span>
             <p className='inline opacity-40'>{reviews} Customer reviews</p>
           </div>
           <p className='text-sm max-w-[400px]'>{desc}</p>
@@ -116,16 +116,16 @@ export default function User() {
               })}
             </div>
           </div>
-          <div className='flex gap-3 my-3'>
+          <div className='flex xs:gap-3 gap-1.5 my-3'>
             <div className='flex sm:gap-3 gap-1 border border-black/40 sm:px-3 px-1 w-fit rounded-md items-center'>
-              <button className='hover:bg-black/20 p-2.5 py-0.5  rounded-full' onClick={()=>changeQuant(id,'dec')}>-</button>
+              <button className='hover:bg-black/20 xs:p-2.5 p-1.5 xs:py-0.5 py-0  rounded-full' onClick={()=>changeQuant(id,'dec')}>-</button>
               <span>{quantity}</span>
-              <button className='hover:bg-black/20 p-2 py-0.5  rounded-full' onClick={()=>changeQuant(id,'inc')}>+</button>
+              <button className='hover:bg-black/20 xs:p-2 p-1 xs:py-0.5 py-0  rounded-full' onClick={()=>changeQuant(id,'inc')}>+</button>
             </div>
-            <button className=' lg:px-8 sm:px-6 sm:py-3 px-2 py-1 border-black border bg-transparent hover:bg-black hover:text-white capitalize rounded-xl transition-all duration-500' onClick={()=>addToCart(id)}>
+            <button className=' lg:px-8 sm:px-6 sm:py-3 sm:text-sm text-xs px-2 py-1 border-black border bg-transparent hover:bg-black hover:text-white capitalize rounded-xl transition-all duration-500' onClick={()=>addToCart(id)}>
             {cart?'remove from cart':'add to Cart'} 
             </button>
-            <button className={`lg:p-4 sm:p-3 p-1 w-fit text-sm border-black border bg-transparent ${wishlist?'rounded-[50%]':'hover:rounded-[50%] rounded-[25%]'} transition-all duration-500 `} onClick={()=>addToWishlist(id)}>
+            <button className={`lg:p-4 sm:p-3 p-1 w-fit text-sm border-black border bg-transparent ${wishlist?'rounded-[50%]':'hover:rounded-[50%] rounded-[10px]'} transition-all duration-500 `} onClick={()=>addToWishlist(id)}>
               {wishlist?<Heart strokeWidth={2} fill='#000' className='scale-75 md:scale-100' />:<Heart strokeWidth={2}  fill='#fff' className='scale-75 md:scale-100' />}
             </button>
           </div>

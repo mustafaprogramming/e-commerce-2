@@ -93,8 +93,9 @@ export default function Checkout() {
          </div>
          <div className=" text-sm font-[500] capitalize">
           {cartProducts.map((product)=>{
-            return  <div className='grid grid-cols-2 gap-2' key={product.id}>
-                      <p className='text-black/80 text-start flex gap-1.5 items-center '><span className='text-black/50 line-clamp-1'>{product.title}</span><X size={12} color='#000' />{product.quantity} </p>
+            return  <div className='grid grid-cols-[60%_10%_30%]' key={product.id}>
+                      <p className='text-black/50 line-clamp-1'>{product.title}</p>
+                      <span className='text-black/80 text-start flex gap-1.5 items-center '><X size={12} color='#000' />{product.quantity} </span>
                       <p className='text-black/50 text-end'>$ {product.quantity*product.price}</p>
                     </div>
           })}

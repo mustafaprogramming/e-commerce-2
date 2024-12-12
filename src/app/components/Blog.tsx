@@ -41,7 +41,7 @@ export default function BlogBG(prop: blogType) {
   const { image, title, id, date, desc, author, tag } = prop
   return (
     <article className=' flex flex-col gap-3 '>
-      <div className=' w-full h-[60vh] rounded-xl overflow-hidden'>
+      <div className=' w-full sm:h-[60vh] h-[30vh] rounded-xl overflow-hidden'>
         <Image
           src={image}
           alt={title}

@@ -38,11 +38,11 @@ export default function Header() {
     setSideCartOpen(false);
   }
   return (
-    <header ref={headerRef} className={`${scrolled?'bg-white border-b':'bg-transparent border-b border-b-transparent'}  fixed top-0 left-0 transition-all duration-400 flex  w-full h-[10vh] items-center font-[500] z-10 `} >
+    <header ref={headerRef} className={`${pathname==='/'?scrolled?'bg-white':'bg-transparent border-b-transparent':scrolled?' bg-white':'bg-white border-b-transparent'} border-b  fixed top-0 left-0 transition-all duration-400 flex  w-full h-[10vh] items-center font-[500] z-10 `} >
       {sideCartOpen && <div onClick={closeSideCart} className="bg-black/50 fixed top-0 bottom-0 w-screen h-screen"></div>}
       <SideCart closeSideCart={closeSideCart} sideCartOpen={sideCartOpen} />
       
-      <ul className={` capitalize flex lg:pl-32 md:gap-16 sm:gap-10 xs:gap-8 gap-4 mx-auto  w-fit `}>
+      <ul className={` capitalize flex lg:pl-32 md:gap-16 sm:gap-10 xs:gap-8 gap-4 xs:mx-auto mx-4 w-full justify-around  xs:w-fit `}>
         {Links.map((link,index)=>{
           return <li key={index}><Link prefetch className={`${pathname===link.pathLink?'border-b-black':'border-b-transparent'} border-b-2 transition-all duration-500 hover:border-b-black/50`} href={link.pathLink}>{link.pathname}</Link></li>
         })}

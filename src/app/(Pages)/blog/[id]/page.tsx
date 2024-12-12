@@ -84,8 +84,8 @@ export default function User() {
         <ChevronRight color='#000' size={20} />
         <span className='border-l border-black pl-5 ml-1 line-clamp-1'>{title}</span>
       </div>
-      <article className='lg:px-10 px-4 grid md:grid-cols-2 grid-cols-1  gap-10  sm:my-10 mt-10'>
-        <div className=' w-full sm:h-[60vh] h-[30vh]  overflow-hidden'>
+      <article className='lg:px-10 sm:px-6 px-2 grid md:grid-cols-2 grid-cols-1  gap-10  sm:my-10 mt-10'>
+        <div className=' w-full sm:h-[60vh] h-[30vh]  overflow-hidden rounded-xl'>
           <Image
             src={image}
             alt={title}
