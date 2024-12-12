@@ -18,7 +18,7 @@ export default function Recommended({
   num?: number
 }) {
   const { products } = useGlobalContext() as { products: ProductType[] }
-  let showProducts: ProductType[] = array ? array : products
+  const showProducts: ProductType[] = array ? array : products
   if (showProducts.length <= 0) {
     return <></>
   }

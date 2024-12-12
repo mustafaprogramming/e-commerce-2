@@ -1,5 +1,5 @@
 'use client'
-import {  useGlobalContext } from '@/app/GlobalContext';
+import {  cartWishlist, ChangeQuant, ChangeVal, useGlobalContext } from '@/app/GlobalContext';
 import { ProductType } from '@/app/data'
 import Link from 'next/link';
 import { ChevronRight , Star , StarHalf , Heart } from 'lucide-react';
@@ -11,15 +11,15 @@ import Recommended from '@/app/components/Recommended';
 
 
 export default function User() {
-  const {id}=useParams();
-  const {products,changeColor,changeSize,changeQuant,addToCart,addToWishlist} = useGlobalContext() as {products:ProductType[],changeColor:Function,changeSize:Function,changeQuant:Function,addToCart:Function,addToWishlist:Function,};
+  const {id}=useParams() as {id:string};
+  const {products,changeColor,changeSize,changeQuant,addToCart,addToWishlist} = useGlobalContext() as {products:ProductType[],changeColor:ChangeVal,changeSize:ChangeVal,changeQuant:ChangeQuant,addToCart:cartWishlist,addToWishlist:cartWishlist,};
   const [product, setProduct] = useState<ProductType | null>(null);
   const [loading,setLoading]=useState(false)
   const [error,setError]=useState(false)
   const [imgIdx,setImgIdx]=useState(0)
   useEffect(()=>{
     setLoading(true)
-    let item=products.find(el=>el.id===id);
+    const item=products.find(el=>el.id===id);
     if(item){
       setProduct(item);
       setLoading(false)
@@ -40,7 +40,7 @@ export default function User() {
           <div className="text-center text-white px-6 py-12 md:px-12 md:py-16">
             <h1 className="text-5xl font-extrabold mb-4">Product Not Found</h1>
             <p className="text-lg mb-6">
-              Sorry, we couldn't find the product you were looking for.
+              Sorry, we couldn&apos;t find the product you were looking for.
             </p>
             <Link href="/shop" className="inline-block bg-black/80 text-white px-6 py-3 rounded-lg text-lg hover:bg-black transition duration-300 ease-in-out">
                 Go Back to Shop
@@ -112,7 +112,6 @@ export default function User() {
             <span className='opacity-40 capitalize  text-sm'>color</span>
             <div className='flex gap-2'>
               {colorOptions.map((col,index)=>{
-                console.log(col)
                 return <button key={index} className={`${col===color?' outline-black outline-1 outline':''} border h-6 w-6 rounded-full text-sm `} onClick={()=>{changeColor(id,col)}} style={{backgroundColor:col}}></button>
               })}
             </div>

@@ -14,7 +14,7 @@ export default function Search() {
   const [keyword,setKeyword]=useState('');
   const [loading,setLoading]=useState(false);
   const [SearchResults,setSearchResults]=useState<ProductType[]>([]);
-  let showNumber=8
+  const showNumber=8
   function search(){
     setLoading(true)
     const searchArray = products.filter(product => {
@@ -27,7 +27,7 @@ export default function Search() {
   }
   useEffect(()=>{
     search();
-  },[keyword])
+  },[keyword,search])
  return (
   <main className={` flex flex-1 flex-col `}>
       <Banner text='Search' />

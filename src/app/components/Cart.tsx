@@ -4,6 +4,7 @@ import Link from 'next/link';
 import {  useGlobalContext } from '../GlobalContext';
 import { ProductType } from '../data'
 import { CartProduct, SideCartProduct } from './Product';
+import { cartOpenClose } from './Header';
 
 export default function CartSection() {
  const {cartProducts}=useGlobalContext() as {cartProducts:ProductType[]};
@@ -26,7 +27,7 @@ export default function CartSection() {
   )
 }
 
-export function SideCart({closeSideCart,sideCartOpen}:{closeSideCart:Function,sideCartOpen:boolean}) {
+export function SideCart({closeSideCart,sideCartOpen}:{closeSideCart:cartOpenClose,sideCartOpen:boolean}) {
  const {cartProducts,totalItems,cartTotal,}=useGlobalContext() as {cartProducts:ProductType[],totalItems:number,cartTotal:number,};
  
   return (

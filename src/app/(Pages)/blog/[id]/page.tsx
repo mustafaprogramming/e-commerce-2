@@ -31,10 +31,10 @@ export default function User() {
   }
   useEffect(() => {
     search()
-  }, [keyword])
+  }, [keyword,search])
   useEffect(() => {
     setLoading(true)
-    let item = blogs.find((el) => el.id === id)
+    const item = blogs.find((el) => el.id === id)
     if (item) {
       setBlog(item)
       setLoading(false)
@@ -57,7 +57,7 @@ export default function User() {
         <div className='text-center text-white px-6 py-12 md:px-12 md:py-16'>
           <h1 className='text-5xl font-extrabold mb-4'>Blog Not Found</h1>
           <p className='text-lg mb-6'>
-            Sorry, we couldn't find the blog you were looking for.
+            Sorry&#39; we couldn&#39;t find the blog you were looking for.
           </p>
           <Link
             href='/blog'

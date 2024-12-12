@@ -14,7 +14,7 @@ export default function User() {
     if (form1.current&&form2.current) {
       const height1 = form1.current.getBoundingClientRect().height+60;
       const height2 = form2.current.getBoundingClientRect().height+60;
-      let height=register?height2:height1;
+      const height=register?height2:height1;
       setFormHeight(height);
     }
   }, [register])

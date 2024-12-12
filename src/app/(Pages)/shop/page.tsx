@@ -30,7 +30,7 @@ export default function Shop() {
     const endIdx = startIdx + validShowNumber
 
     // Create a sorted copy of `products` based on `sortType`
-    let sortedProducts = [...products]
+    const sortedProducts = [...products]
     if (sortType === 'price') {
       sortedProducts.sort((a, b) => a.price - b.price)
     } else if (sortType === 'reviews') {

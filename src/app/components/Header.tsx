@@ -5,12 +5,12 @@ import { useEffect, useRef, useState } from "react";
 import {Links,IconLinks} from '../data'
 import { SideCart } from "./Cart";
 
-
+export type cartOpenClose=()=>void
 
 
 export default function Header() {
   const PATHNAME = usePathname();
-  let pathname=`/${PATHNAME.split('/')[1]}`
+  const pathname=`/${PATHNAME.split('/')[1]}`
   const [sideCartOpen,setSideCartOpen]=useState(false);
   const headerRef = useRef<HTMLDivElement>(null);
   const [scrolled, setScrolled] = useState(false);
@@ -31,10 +31,10 @@ export default function Header() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-  const openCart=()=>{
+  const openCart:cartOpenClose=()=>{
     setSideCartOpen(true);
   }
-  const closeSideCart=()=>{
+  const closeSideCart:cartOpenClose=()=>{
     setSideCartOpen(false);
   }
   return (

@@ -32,10 +32,10 @@ export default function Blog() {
   }
   useEffect(() => {
     search()
-  }, [keyword])
+  }, [keyword,search])
   // Generate button array for pagination
   const btnArr = Array.from({ length: noOfPages }, (_, i) => i + 1)
-  let showNumber = 3
+  const showNumber = 3
   useEffect(() => {
     // calculate pages
     const pages = Math.ceil(blogs.length / showNumber)
@@ -45,7 +45,7 @@ export default function Blog() {
     const endIdx = startIdx + showNumber
     // Update displayed Blogs
     setShowBlogs(blogs.slice(startIdx, endIdx))
-  }, [pageIndex, blogs])
+  }, [pageIndex, blogs,showNumber])
   return (
     <main id='top' className={` flex flex-1 flex-col `}>
       <Banner text='Blog' />

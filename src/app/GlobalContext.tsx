@@ -2,6 +2,9 @@
 import { createContext, useContext, useState } from 'react'
 import { Product, blogs } from './data'
 
+export type cartWishlist = (id: string) => void;
+export type ChangeVal = (id: string, val: string) => void;
+export type ChangeQuant = (id: string, operator: 'inc' | 'dec') => void;
 const globalContext = createContext({})
 export const useGlobalContext = () => useContext(globalContext)
 
@@ -12,35 +15,36 @@ const GlobalContext = ({
 }>) => {
   const [products, setProducts] = useState(Product);
   
-  function addToCart( id:string) {
+  const addToCart:cartWishlist=(id)=> {
     setProducts((prev) =>
       prev.map((product) =>
         product.id === id ? { ...product, cart:!product.cart } : product
       )
     );
   }
-  function addToWishlist( id:string) {
+  const addToWishlist:cartWishlist=(id)=> {
     setProducts((prev) =>
       prev.map((product) =>
         product.id === id ? { ...product, wishlist:!product.wishlist } : product
       )
     );
   }
-  function changeColor( id:string,color: string) {
+  const changeColor: ChangeVal = (id, color) => {
     setProducts((prev) =>
       prev.map((product) =>
         product.id === id ? { ...product, color } : product
       )
     );
-  }
-  function changeSize(id:string,size: string) {
+  };
+  
+  const changeSize: ChangeVal = (id, size) => {
     setProducts((prev) =>
       prev.map((product) =>
         product.id === id ? { ...product, size } : product
       )
     );
-  }
-  function changeQuant(id:string,operator: string) {
+  };
+  const changeQuant:ChangeQuant=(id,operator)=> {
     setProducts((prev) => 
       prev.map((product) => {
         if (product.id === id) {
@@ -65,7 +69,7 @@ const GlobalContext = ({
     );
   }
   const cartProducts=products.filter(item=>item.cart);
-  let {totalItems,cartTotal}=cartProducts.reduce((total,cartItem)=>{
+  const {totalItems,cartTotal}=cartProducts.reduce((total,cartItem)=>{
   total.totalItems+=cartItem.quantity;
   total.cartTotal+=parseFloat((cartItem.price*cartItem.quantity).toFixed(2));
   return total

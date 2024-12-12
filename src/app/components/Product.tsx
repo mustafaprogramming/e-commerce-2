@@ -3,16 +3,17 @@
 import Image from "next/image"
 import { Eye,Heart,Trash } from 'lucide-react';
 import Link from "next/link";
-import {  useGlobalContext } from "../GlobalContext";
+import {  cartWishlist, ChangeQuant, useGlobalContext } from "../GlobalContext";
 import { ProductType } from '../data'
+import { cartOpenClose } from "./Header";
 
 
 type sideCart= ProductType & {
-  closeSideCart:Function
+  closeSideCart:cartOpenClose
 }
 export default function Product(prop:ProductType) {
  const {id,image,title,price,reviews,rating,wishlist,cart}=prop;
- const {addToWishlist,addToCart}=useGlobalContext() as {addToWishlist:Function,addToCart:Function};
+ const {addToWishlist,addToCart}=useGlobalContext() as {addToWishlist:cartWishlist,addToCart:cartWishlist};
   return (
     <article className="p-2 md:hover:border-black border group md:border-transparent border-black flex flex-col gap-4 overflow-hidden transition-all duration-500 relative">
      <div className="absolute md:opacity-0 md:group-hover:opacity-100 transition-all duration-700 md:w-full md:h-full md:bg-black/30 md:top-0 md:left-0 flex md:flex-row flex-col lg:gap-6 md:gap-4 gap-2 z-[1] items-center justify-center">
@@ -33,7 +34,7 @@ export default function Product(prop:ProductType) {
 }
 export function SideCartProduct (prop:sideCart ){
   const {id,title,quantity,price,image,closeSideCart}=prop;
-  const {addToCart}=useGlobalContext() as {addToCart:Function};
+  const {addToCart}=useGlobalContext() as {addToCart:cartWishlist};
 
   return (
     <article className="w-full grid grid-cols-[25%_65%_5%] items-center" >
@@ -52,7 +53,7 @@ export function SideCartProduct (prop:sideCart ){
 }
 
 export function CartProduct(prop:ProductType){
-  const {changeQuant,addToCart}=useGlobalContext() as {changeQuant:Function,addToCart:Function,}
+  const {changeQuant,addToCart}=useGlobalContext() as {changeQuant:ChangeQuant,addToCart:cartWishlist,}
   const {image,title,id,price,quantity}=prop
   return (
     <div className=' w-full h-fit items-center grid grid-cols-[35%_17%_17%_17%_6%] justify-around sm:grid-cols-[40%_20%_16%_20%_4%] capitalize font-[500]'>
